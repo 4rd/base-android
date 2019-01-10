@@ -1,21 +1,21 @@
 package connorf.com.retrofitcoroutines.ui
 
 import android.arch.lifecycle.ViewModel
-import connorf.com.retrofitcoroutines.engine.App
 import connorf.com.retrofitcoroutines.engine.model.Todo
+import connorf.com.retrofitcoroutines.engine.repository.TodoRepository
 
-class MainViewModel: ViewModel() {
-    val todos = App.todoRepo.get()
+class MainViewModel(private val todoRepo: TodoRepository): ViewModel() {
+    val todos = todoRepo.get()
 
     fun updateTodo(todo: Todo) {
-        App.todoRepo.updateTodo(todo)
+        todoRepo.updateTodo(todo)
     }
     fun update() {
-        App.todoRepo.updateFromNetwork()
+        todoRepo.updateFromNetwork()
     }
 
     fun clearLocal() {
-        App.todoRepo.clearLocalData()
+        todoRepo.clearLocalData()
     }
 
 }

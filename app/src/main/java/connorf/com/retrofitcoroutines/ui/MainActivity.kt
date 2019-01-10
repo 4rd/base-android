@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
 import connorf.com.retrofitcoroutines.R
-import connorf.com.retrofitcoroutines.ui.ext.getViewModel
 import connorf.com.retrofitcoroutines.ui.ext.reObserve
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : FragmentActivity() {
-    private val model: MainViewModel by lazy { getViewModel<MainViewModel>() }
+    private val model: MainViewModel by viewModel()
     private val adapter: TodoListAdapter?
         get() = rv_todos?.adapter as? TodoListAdapter
 
